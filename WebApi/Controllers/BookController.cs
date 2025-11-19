@@ -1,13 +1,13 @@
 
 
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Update.Internal;
 using WebApi.BookOperations.CreateBook;
 using WebApi.BookOperations.GetBookId;
 using WebApi.BookOperations.GetBooks;
 using WebApi.BookOperations.UpdateBook;
 using WebApi.BookOperations.DeleteBook;
 using WebApi.DBOperations;
+using static WebApi.BookOperations.UpdateBook.UpdateBookCommand;
 
 namespace WebApi.AddControllers
 {
@@ -88,7 +88,7 @@ namespace WebApi.AddControllers
             }
         [HttpPut]
         public IActionResult UpdateBook(int id, [FromBody] 
-        UpdateBookCommand.UpdateBookModel updatedBook)
+       UpdateBookModel updatedBook)
         {
             // var book = _context.Books.SingleOrDefault(x => x.Id == id);
             // if (book is null)
