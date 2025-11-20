@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using WebApi.Common;
 using WebApi.DBOperations;
-
+using AutoMapper;
 public partial class Program
 {
     private static void Main(string[] args)
@@ -13,8 +15,9 @@ public partial class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
         builder.Services.AddDbContext<BookStoreDbContext>(options => options.UseInMemoryDatabase(databaseName: "BookStoreDB"));
-        builder.Services.AddControllers();
+        builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+        builder.Services.AddControllers();
         var app = builder.Build();
 
         using (var scope = app.Services.CreateScope())
